@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -16,10 +16,7 @@ export class UserComponent {
   @Input({required: true}) name!: string;
 
   // EventEmitter allow us to emit values outside to the parent ones.
-  // @Output() select = new EventEmitter();
-
-  select = output<string>();
-
+  @Output() select = new EventEmitter<string>();
 
   get imagePath(){
     return 'assets/users/' + this.avatar;
