@@ -9,7 +9,7 @@ import { Component, input, Input } from '@angular/core';
 })
 export class TasksComponent {
   
-  // @Input({required: true}) userName!:string;
-  userName = input.required<string>();
+  @Input() userName?: string;
+  // userName = input.required<string>();
 
 } 

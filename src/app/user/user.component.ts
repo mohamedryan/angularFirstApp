@@ -1,5 +1,17 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+// type User = {
+//   id: string,
+//   name: string,
+//   avatar: string
+// }
+
+interface User {
+  id: string,
+  name: string,
+  avatar: string
+}
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -9,21 +21,23 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class UserComponent {
   
   // - this Input decorator make the variable to settable from outside
-  // - the '!' mark here telling the TS that we are aware that there is no assiging value for the variable
+  // - the '!' (nullish) mark here telling the TS that we are aware that there is no assiging value for the variable
   //   as we use it as an input so no need to assign value, but TS not understand it using for this.
-  @Input({required: true}) id!: string;
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
+  // @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
+
+  @Input({required: true}) user!: User;
 
   // EventEmitter allow us to emit values outside to the parent ones.
   @Output() select = new EventEmitter<string>();
 
   get imagePath(){
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   onSelectUser(){ 
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 
 }
