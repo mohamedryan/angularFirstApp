@@ -17,6 +17,7 @@ export class UserComponent {
   // @Input({required: true}) name!: string;
 
   @Input({required: true}) user!: User;
+  @Input({required: true}) selected! : boolean;
 
   // EventEmitter allow us to emit values outside to the parent ones.
   @Output() select = new EventEmitter<string>();
