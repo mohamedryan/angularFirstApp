@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { NewInvestmentComponent } from './new-investment/new-investment.component';
 import { InvestmentsService } from './investments.service';
 
 @Component({
   selector: 'app-investments',
-  standalone: true,
-  imports: [NewInvestmentComponent],
   templateUrl: './investments.component.html',
   styleUrl: './investments.component.css'
 })
@@ -15,5 +14,9 @@ export class InvestmentsComponent {
 
   }
 
-  investmentsResult = this.investmentsService.getResults();
+  investmentsResult = computed(() => this.investmentsService.getResults())
+
+  // get investmentsResult(){
+  //  return this.investmentsService.getResults();
+  // }
 }

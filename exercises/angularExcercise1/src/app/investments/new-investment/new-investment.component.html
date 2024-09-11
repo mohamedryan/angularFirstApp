@@ -3,24 +3,24 @@
 
     <div class="input-group">
         <label for="">Intial Investment</label>
-        <input type="text" [(ngModel)] ="intialInvestment">
+        <input type="number" name="intialInvestment" [(ngModel)] ="intialInvestment">
     </div>
 
     <div class="input-group">
         <label for="">Annual Investment</label>
-        <input type="text" [(ngModel)] ="annualInvestment">
+        <input type="number" name="annualInvestment" [(ngModel)] ="annualInvestment">
     </div>
 
 
     <div class="input-group">
         <label for="">Expected Return</label>
-        <input type="text" [(ngModel)] ="expectedReturn">
+        <input type="number" name="expectedReturn" [(ngModel)] ="expectedReturn">
     </div>
 
 
     <div class="input-group">
         <label for="">Duration</label>
-        <input type="text" [(ngModel)] ="duration">
+        <input type="number" name="duration" [(ngModel)] ="duration">
     </div>
 
     <button type="submit">Calculate</button>

@@ -1,6 +1,7 @@
 <app-new-investment />
 
-<table>
+
+<table *ngIf="(investmentsResult()).length > 0">
     <thead>
         <tr>
             <th>Year</th>
@@ -11,13 +12,13 @@
         </tr>
     </thead>
     <tbody>
-        @for(item of investmentsResult; track item.year){
+        @for(item of investmentsResult(); track item.year){
             <tr>
                 <td>{{item.year}}</td>
-                <td>{{item.annualInvestment}}</td>
-                <td>{{item.interest}}</td>
-                <td>{{item.totalInterest}}</td>
-                <td>{{item.totalAmountInvested}}</td>
+                <td>{{item.annualInvestment | currency:'USD'}}</td>
+                <td>{{item.interest | currency}}</td>
+                <td>{{item.totalInterest | currency}}</td>
+                <td>{{item.totalAmountInvested | currency}}</td>
             </tr>
         }
     </tbody>

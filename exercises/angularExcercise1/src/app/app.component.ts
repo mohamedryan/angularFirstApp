@@ -4,8 +4,6 @@ import { InvestmentsComponent } from './investments/investments.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, InvestmentsComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {}

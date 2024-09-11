@@ -1,15 +1,14 @@
-import { Injectable } from "@angular/core";
+import { computed, Injectable, signal, Signal } from "@angular/core";
 import { InvestmentCalcualtionResulModel, UserInvestmentInputModel } from "./user-investments.model";
 
 
 @Injectable({providedIn: 'root'})
 export class InvestmentsService {
 
-    private investmentsResult : InvestmentCalcualtionResulModel[] = [];
+    private investmentsResult = signal<InvestmentCalcualtionResulModel[]>([]);
     
     calculateInvestment(data: UserInvestmentInputModel): void{
-        this.investmentsResult = [];
-        
+        this.investmentsResult.set([]);
         let investmentValue = data.initialInvestment;
         
         for (let i = 0; i < data.duration; i++) {
@@ -18,20 +17,18 @@ export class InvestmentsService {
             investmentValue += interestEarnedInYear + data.annualInvestment;
             const totalInterest = investmentValue - data.annualInvestment * year - data.annualInvestment;
 
-            this.investmentsResult.push({
+            this.investmentsResult.update(arr =>  [...arr, {
                 year: year,
                 interest: interestEarnedInYear,
                 valueEndOfYear: investmentValue,
                 annualInvestment: data.annualInvestment,
                 totalInterest: totalInterest,
-                totalAmountInvested: data.initialInvestment + data.annualInvestment * year,
-            });
+                totalAmountInvested: data.initialInvestment + data.annualInvestment * year
+            }]);
         }
     }
 
-    getResults(){
-        return this.investmentsResult;
-    }
+    getResults = computed(() => this.investmentsResult())
 
     
 }
