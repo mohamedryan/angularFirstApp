@@ -16,13 +16,13 @@ export class NewInvestmentComponent {
   duration!:number;
 
 
-  onEnterInvestmentData(){
+  onSubmit(){
 
     this.investmentService.calculateInvestment({
-      initialInvestment:  this.intialInvestment,
-      annualInvestment : this.annualInvestment,
-      expectedReturn: this.expectedReturn,
-      duration: this.duration
+      initialInvestment:  +this.intialInvestment,
+      annualInvestment : +this.annualInvestment,
+      expectedReturn: +this.expectedReturn,
+      duration: +this.duration
     });
 
   }

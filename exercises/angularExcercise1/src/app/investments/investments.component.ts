@@ -14,7 +14,7 @@ export class InvestmentsComponent {
 
   }
 
-  investmentsResult = computed(() => this.investmentsService.getResults())
+  investmentsResult = this.investmentsService.getResults
 
   // get investmentsResult(){
   //  return this.investmentsService.getResults();

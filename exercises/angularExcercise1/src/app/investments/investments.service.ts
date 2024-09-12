@@ -1,5 +1,5 @@
 import { computed, Injectable, signal, Signal } from "@angular/core";
-import { InvestmentCalcualtionResulModel, UserInvestmentInputModel } from "./user-investments.model";
+import type { InvestmentCalcualtionResulModel, UserInvestmentInputModel } from "./user-investments.model";
 
 
 @Injectable({providedIn: 'root'})

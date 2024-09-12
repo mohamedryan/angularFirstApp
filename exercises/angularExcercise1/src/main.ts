@@ -5,6 +5,6 @@ import { AppComponent } from './app/app.component';
 import { AppModule } from './app/app.module';
 
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.log(err));
 
 // bootstrapApplication(AppComponent).catch(err => console.log(err));
