@@ -1,7 +1,6 @@
 <app-new-investment />
 
-
-<table *ngIf="investmentsResult().length > 0">
+<table *ngIf="investmentsResult().length > 0; else enterInvestmentValues;">
     <thead>
         <tr>
             <th>Year</th>
@@ -12,7 +11,14 @@
         </tr>
     </thead>
     <tbody>
-        @for(item of investmentsResult(); track item.year){
+        <tr *ngFor="let item of investmentsResult(); trackBy trackByInvestments;">
+            <td>{{item.year}}</td>
+            <td>{{item.annualInvestment | currency:'USD'}}</td>
+            <td>{{item.interest | currency}}</td>
+            <td>{{item.totalInterest | currency}}</td>
+            <td>{{item.totalAmountInvested | currency}}</td>
+        </tr>
+        <!-- @for(item of investmentsResult(); track item.year){
             <tr>
                 <td>{{item.year}}</td>
                 <td>{{item.annualInvestment | currency:'USD'}}</td>
@@ -20,6 +26,9 @@
                 <td>{{item.totalInterest | currency}}</td>
                 <td>{{item.totalAmountInvested | currency}}</td>
             </tr>
-        }
+        } -->
     </tbody>
 </table>
+
+<ng-template #enterInvestmentValues>
+    <p class="center">Please enter some values and press "Calculate".</p></ng-template>
