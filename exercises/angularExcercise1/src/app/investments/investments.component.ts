@@ -15,7 +15,7 @@ export class InvestmentsComponent {
 
   }
 
-  investmentsResult = this.investmentsService.getResults
+  investmentsResult = computed(() => this.investmentsService.getResults());
 
   trackByInvestments = (index: number, investment: InvestmentCalcualtionResulModel) => {
     return investment.year;
